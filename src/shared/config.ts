@@ -5,5 +5,5 @@ export const endpoints = {
   getUsers: "/users.json",
   removeUserById: "/users",
   addUsers: "/users.json",
-  addPosts: "/posts.json",
+  getPassengersApi: "https://api.instantwebtools.net/v1/passenger",
 };
