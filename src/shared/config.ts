@@ -5,4 +5,5 @@ export const endpoints = {
   getUsers: "/users.json",
   removeUserById: "/users",
   addUsers: "/users.json",
+  addPosts: "/posts.json",
 };
