@@ -10,6 +10,14 @@ export const Navbar = () => (
       <NavLink to={"/users"}>
         <Tab>Users</Tab>
       </NavLink>
+      <NavLink to={"/users-2"}>
+        <Tab>
+          Users{" "}
+          <Tag ml={2} colorScheme={"green"}>
+            2
+          </Tag>
+        </Tab>
+      </NavLink>
       <NavLink to={"/add-user"}>
         <Tab>Add a user</Tab>
       </NavLink>

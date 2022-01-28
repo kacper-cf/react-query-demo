@@ -14,6 +14,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path={"/users"} element={<UserList />}></Route>
+        <Route path={"/users-2"} element={<UserList />}></Route>
         <Route path={"/add-user"} element={<UserForm />} />
         <Route path="/" element={<Welcome />} />
         <Route path="/airlines-paginated" element={<CachedPassengers />} />
