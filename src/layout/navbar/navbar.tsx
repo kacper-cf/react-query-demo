@@ -1,9 +1,9 @@
-import { Tab, TabList, Tabs, Tag, TagLabel } from "@chakra-ui/react";
+import { Tab, TabList, Tabs, Tag } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
 export const Navbar = () => (
   <Tabs isFitted={true} width={"100%"}>
-    <TabList active>
+    <TabList>
       <NavLink to={"/"}>
         <Tab>Home</Tab>
       </NavLink>

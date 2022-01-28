@@ -15,13 +15,13 @@ import { fetchPassengers } from "../store/passengers";
 export const CachedPassengers: FC = () => {
   const [page, setPage] = useState(0);
 
-  const { data, isLoading } = useQuery(
+  const { data, isFetching } = useQuery(
     ["passengers", page],
     () => fetchPassengers(page),
-    { keepPreviousData: true }
+    { keepPreviousData: true, staleTime: 10000 }
   );
 
-  if (isLoading) {
+  if (isFetching) {
     return (
       <Box
         width="50rem"
