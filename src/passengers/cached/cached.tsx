@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { useQuery } from "react-query";
 import { Loader } from "../loader";
+import { Pagination } from "../pagination";
 import { PassengersTable } from "../passengersTable";
 import { fetchPassengers } from "../store/passengers";
 
@@ -18,10 +19,9 @@ export const CachedPassengers: FC = () => {
   }
 
   return (
-    <PassengersTable
-      page={page}
-      setPage={setPage}
-      passengers={data?.data || []}
-    />
+    <>
+      <PassengersTable passengers={data?.data || []} />
+      <Pagination page={page} setPage={setPage} />
+    </>
   );
 };

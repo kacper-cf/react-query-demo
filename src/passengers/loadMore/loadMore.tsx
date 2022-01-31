@@ -13,9 +13,9 @@ const mapPagesToComponents = (
   return infiniteData.pages.map(({ data }, pageIndex) => {
     return data.map(({ name, trips }, index) => (
       <Tr key={`${name}_${trips}_${index}`}>
-        <Td textAlign={"center"}>{pageIndex}</Td>
-        <Td textAlign={"center"}>{name}</Td>
-        <Td textAlign={"center"}>{trips || 0}</Td>
+        <Td>{pageIndex}</Td>
+        <Td>{name}</Td>
+        <Td>{trips || 0}</Td>
       </Tr>
     ));
   });

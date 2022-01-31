@@ -1,6 +1,6 @@
-import { Box, CircularProgress } from "@chakra-ui/react";
 import { FC, useEffect, useState } from "react";
 import { Loader } from "../loader";
+import { Pagination } from "../pagination";
 import { PassengersTable } from "../passengersTable";
 import { fetchPassengers, PassengersCollectionDto } from "../store/passengers";
 
@@ -31,10 +31,9 @@ export const NotCachedPassengers: FC = () => {
   }
 
   return (
-    <PassengersTable
-      page={page}
-      setPage={setPage}
-      passengers={data?.data || []}
-    />
+    <>
+      <PassengersTable passengers={data?.data || []} />
+      <Pagination page={page} setPage={setPage} />
+    </>
   );
 };
