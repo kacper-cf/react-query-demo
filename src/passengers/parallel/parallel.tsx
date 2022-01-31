@@ -1,7 +1,8 @@
+import { Box } from "@chakra-ui/react";
 import { FC } from "react";
 import { useQueries } from "react-query";
-import { PassengersTable } from "../passengersTable";
 import { fetchPassengers } from "../store/passengers";
+import { ParallelPassengers } from "./parallelPassengers";
 
 export const PassengersParrallel: FC = () => {
   const [firstQuery, secondQuery] = useQueries([
@@ -10,17 +11,9 @@ export const PassengersParrallel: FC = () => {
   ]);
 
   return (
-    <div>
-      {firstQuery.isFetching ? (
-        <p>First query is loading</p>
-      ) : (
-        <PassengersTable passengers={firstQuery.data?.data || []} />
-      )}
-      {secondQuery.isFetching ? (
-        <p>Second query is loading</p>
-      ) : (
-        <PassengersTable passengers={firstQuery.data?.data || []} />
-      )}
-    </div>
+    <Box>
+      <ParallelPassengers queryResult={firstQuery} name="First query" />
+      <ParallelPassengers queryResult={secondQuery} name="Second query" />
+    </Box>
   );
 };

@@ -1,15 +1,16 @@
 import React from "react";
 import { Toaster } from "react-hot-toast";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./layout/layout";
-import { NotCachedPassengers } from "./passengers/notCached/notCached";
 import { CachedPassengers } from "./passengers/cached/cached";
+import { CancelQuery } from "./passengers/cancel/cancel";
+import { LoadMorePassengers } from "./passengers/loadMore/loadMore";
+import { NotCachedPassengers } from "./passengers/notCached/notCached";
+import { PassengersParrallel } from "./passengers/parallel/parallel";
 import { UserForm } from "./users/form/userForm";
 import { UserList } from "./users/list/list";
 import { Welcome } from "./welcome/welcome";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { LoadMorePassengers } from "./passengers/loadMore/loadMore";
-import { PassengersParrallel } from "./passengers/parallel/parallel";
 
 function App() {
   return (
@@ -23,9 +24,10 @@ function App() {
         <Route path="/airlines" element={<NotCachedPassengers />} />
         <Route path="/airlines-load-more" element={<LoadMorePassengers />} />
         <Route path="/airlines-parallel" element={<PassengersParrallel />} />
+        <Route path="/airlines-cancel" element={<CancelQuery />} />
       </Routes>
       <Toaster />
-      <ReactQueryDevtools />
+      <ReactQueryDevtools initialIsOpen={false} />
     </Layout>
   );
 }

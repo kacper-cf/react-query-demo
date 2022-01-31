@@ -53,6 +53,14 @@ export const Navbar = () => (
           </Tag>
         </Tab>
       </NavLink>
+      <NavLink to={"/airlines-cancel"}>
+        <Tab>
+          Airlines{" "}
+          <Tag ml={2} colorScheme={"teal"}>
+            Cancellable
+          </Tag>
+        </Tab>
+      </NavLink>
     </TabList>
   </Tabs>
 );
