@@ -1,20 +1,13 @@
-import {
-  Button,
-  CircularProgress,
-  Flex,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { FC } from "react";
 import toast from "react-hot-toast";
 import { useMutation, useQuery } from "react-query";
-import { fetchUsers, deleteUser } from "../store";
+import { Loader } from "../../passengers/loader";
+import { deleteUser, fetchUsers } from "../store";
 export const UserList: FC = () => {
-  const { isFetching, data, error, refetch } = useQuery("users", fetchUsers);
+  const { isFetching, data, error, refetch } = useQuery("users", fetchUsers, {
+    staleTime: 60000,
+  });
 
   const removeUserMutation = useMutation(
     "deleteUser",
@@ -28,11 +21,7 @@ export const UserList: FC = () => {
   );
 
   if (isFetching) {
-    return (
-      <Flex justifyContent={"center"} alignItems={"center"}>
-        <CircularProgress isIndeterminate />
-      </Flex>
-    );
+    return <Loader />;
   }
 
   if (error) {
