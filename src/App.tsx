@@ -9,6 +9,7 @@ import { UserList } from "./users/list/list";
 import { Welcome } from "./welcome/welcome";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { LoadMorePassengers } from "./passengers/loadMore/loadMore";
+import { PassengersParrallel } from "./passengers/parallel/parallel";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/airlines-paginated" element={<CachedPassengers />} />
         <Route path="/airlines" element={<NotCachedPassengers />} />
         <Route path="/airlines-load-more" element={<LoadMorePassengers />} />
+        <Route path="/airlines-parallel" element={<PassengersParrallel />} />
       </Routes>
       <Toaster />
       <ReactQueryDevtools />
