@@ -8,6 +8,7 @@ import { UserForm } from "./users/form/userForm";
 import { UserList } from "./users/list/list";
 import { Welcome } from "./welcome/welcome";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { LoadMorePassengers } from "./passengers/loadMore/loadMore";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/airlines-paginated" element={<CachedPassengers />} />
         <Route path="/airlines" element={<NotCachedPassengers />} />
+        <Route path="/airlines-load-more" element={<LoadMorePassengers />} />
       </Routes>
       <Toaster />
       <ReactQueryDevtools />

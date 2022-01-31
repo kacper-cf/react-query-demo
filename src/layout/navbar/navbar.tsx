@@ -37,6 +37,14 @@ export const Navbar = () => (
           </Tag>
         </Tab>
       </NavLink>
+      <NavLink to={"/airlines-load-more"}>
+        <Tab>
+          Airlines{" "}
+          <Tag ml={2} colorScheme={"teal"}>
+            With load more
+          </Tag>
+        </Tab>
+      </NavLink>
     </TabList>
   </Tabs>
 );
