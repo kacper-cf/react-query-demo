@@ -9,3 +9,11 @@
 7. Query invalidation
 8. Query cancellation
 9. Testing
+
+## Bonus content (to dive deep on your own!)
+
+https://react-query.tanstack.com/guides/updates-from-mutation-responses + use cases
+
+https://react-query.tanstack.com/guides/optimistic-updates + use cases
+
+https://react-query.tanstack.com/guides/suspense - alternative to isFetching
