@@ -4,10 +4,15 @@ import toast from "react-hot-toast";
 import { useMutation, useQuery } from "react-query";
 import { Loader } from "../../passengers/loader";
 import { deleteUser, fetchUsers } from "../store";
+
 export const UserList: FC = () => {
-  const { isFetching, data, error, refetch } = useQuery("users", fetchUsers, {
-    staleTime: 60000,
-  });
+  const { isFetching, data, refetch, error } = useQuery(
+    "users",
+    () => fetchUsers(),
+    {
+      staleTime: 60000,
+    }
+  );
 
   const removeUserMutation = useMutation(
     "deleteUser",
@@ -17,15 +22,19 @@ export const UserList: FC = () => {
         toast.success("User deleted successfully");
         await refetch();
       },
+      onError: () => {
+        toast.error("An error occurred when tried to remove user");
+      },
+      retry: false,
     }
   );
 
-  if (isFetching) {
-    return <Loader />;
+  if (error) {
+    return <div>An error occurred</div>;
   }
 
-  if (error) {
-    return <div>An error occurred: {error}</div>;
+  if (isFetching) {
+    return <Loader />;
   }
 
   if (!data?.length) {
@@ -42,14 +51,14 @@ export const UserList: FC = () => {
       </Thead>
       <Tbody>
         {data?.map(({ fullName, id }) => (
-          <Tr>
+          <Tr key={id}>
             <Td>{id}</Td>
             <Td>{fullName}</Td>
             <Td>
               <Button
                 colorScheme={"red"}
                 onClick={() => removeUserMutation.mutate(id)}
-                isLoading={removeUserMutation.variables === id}
+                isLoading={Boolean(removeUserMutation.variables === id)}
               >
                 Remove a user
               </Button>
