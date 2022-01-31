@@ -26,3 +26,26 @@ export const fetchPassengers = async (
 
   return response.data;
 };
+
+export const longTakingQuery = async (page: number, signal?: AbortSignal) => {
+  await sleep(50000);
+
+  const urlParams = new URLSearchParams();
+  urlParams.append("page", page.toString());
+  urlParams.append("size", "10");
+
+  const response: AxiosResponse<PassengersCollectionDto> = await axios.get(
+    `${endpoints.getPassengersApi}?${urlParams.toString()}`,
+    { signal }
+  );
+
+  return response.data;
+};
+
+function sleep(time: number) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(undefined);
+    }, time);
+  });
+}
