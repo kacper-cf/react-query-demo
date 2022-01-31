@@ -1,5 +1,5 @@
 import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { InfiniteData, useInfiniteQuery } from "react-query";
 import { fetchPassengers, PassengersCollectionDto } from "../store/passengers";
 
@@ -22,15 +22,21 @@ const mapPagesToComponents = (
 };
 
 export const LoadMorePassengers: FC = () => {
+  const [page, setPage] = useState(1);
   const { fetchNextPage, data, isFetching } = useInfiniteQuery(
-    "passengers",
+    ["passengers"],
     ({ pageParam }) => fetchPassengers(pageParam),
     {
       getNextPageParam: (lastPage, pages) => {
-        return lastPage.totalPages !== pages.length;
+        return lastPage.totalPages !== pages.length ? page : undefined;
       },
     }
   );
+
+  const onLoadMore = () => {
+    fetchNextPage();
+    setPage((page) => page + 1);
+  };
 
   return (
     <div>
@@ -51,7 +57,7 @@ export const LoadMorePassengers: FC = () => {
         justifyContent={"space-around"}
         my={15}
       >
-        <Button isLoading={isFetching} onClick={() => fetchNextPage()}>
+        <Button isLoading={isFetching} onClick={onLoadMore}>
           Load more
         </Button>
       </Box>
